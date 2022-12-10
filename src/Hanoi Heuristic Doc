@@ -1,0 +1,52 @@
+The quickest route to goal state when there are 3-6 plates, has to pass these midway points/states
+
+B represents 2nd stack and C represents the third stack
+H represents Heuristic value to give when the incoming state is one of following.
+
+3plate:  C1   B21
+4plate:  B1   C21    B321
+5plate:  C1   B21    C321   B4321
+6plate:  B1   C21    B321   C4321  B54321
+
+For example:  “3plate: C1  B21”
+Initially 3 plates on stackA
+first state it should reach is:
+‘plate1’ alone on C where H = NumberOfPlates
+Second state it should reach is:
+‘plate2’ ‘plate1’ on B “B21” where H = NumberOfPlates-1
+
+Now it’s very close to the goal “C321” , and prioritize B21 in Frontier. After a few more steps, It’ll reach C321
+
+
+Expanded Node:
+
+321  000  000
+320  100  000
+320  000  100
+300  200  100
+300  100  200
+310  200  000
+300  000  210
+310  000  200
+300  210  000
+
+000  210  300
+000  300  210
+000  310  200
+100  300  200
+
+000  200  310
+100  200  300
+
+200  000  310
+
+100  000  320
+100  320  000
+200  310  000
+
+000  100  320
+210  300  000
+000  321  000
+210  000  300
+
+—-goal—-321
